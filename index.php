@@ -21,30 +21,28 @@
         <div id="layoutAuthentication_content">
             <main>
                 <div class="container">
-                    <div class="row justify-content-center mt-5">
-                        <div class="col-3">
-                            <img src="asset/img/login.svg" class="img-fluid">
-                        </div>
+                    <div class="mt-5 text-center">
+                        <img src="asset/img/logo.svg" class="img-fluid" width="75">
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-lg-5">
                             <div class="card shadow border-0 rounded-4 mt-5">
                                 <div class="card-header">
-                                    <h6 class="text-center fw-bold my-2">
-                                        Sign in untuk menggunakan aplikasi
-                                    </h6>
+                                    <h5 class="text-center fw-bold my-2">
+                                        <?= $title ?>
+                                    </h5>
                                 </div>
                                 <div class="card-body">
-                                    <form class="px-4 pb-2">
+                                    <form class="px-4 pb-2" action="app/login.php" method="POST">
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
-                                            <label for="inputEmail">Username</label>
+                                            <input class="form-control" name="name_user" type="text" placeholder="Username" required />
+                                            <label for="name_user">Username</label>
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="inputPassword" type="password" placeholder="Password" />
-                                            <label for="inputPassword">Password</label>
+                                            <input class="form-control" name="pass_user" type="password" placeholder="Password" required />
+                                            <label for="pass_user">Password</label>
                                         </div>
-                                        <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">
+                                        <button type="submit" class="btn btn-dark w-100 py-2 fw-bold">
                                             Sign in
                                         </button>
                                     </form>

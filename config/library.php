@@ -7,3 +7,4 @@ include 'timezone.php';
 include 'database.php';
 include 'tanggal.php';
 include 'title.php';
+include 'alert.php';

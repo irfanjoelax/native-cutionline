@@ -9,8 +9,6 @@
  */
 
 if (isset($_GET['module'])) $module = $_GET['module'];
-else $module = "beranda";
 
-if ($module == "beranda") include("app/beranda.php");
-elseif ($module == "operator") include("app/operator.php");
-elseif ($module == "keluar") include("src/keluar.php");
+if ($module == "admin") include("app/admin/home.php");
+elseif ($module == "karyawan") include("app/karyawan/home.php");
