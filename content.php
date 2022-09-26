@@ -15,3 +15,8 @@ elseif ($module == "karyawan") include("app/karyawan/home.php");
 
 elseif ($module == "pengaturan") include("app/pengaturan.php");
 elseif ($module == "pengaturan-submit") include("app/pengaturan-submit.php");
+
+elseif ($module == "user") include("app/admin/user/index.php");
+elseif ($module == "user-form") include("app/admin/user/form.php");
+elseif ($module == "user-submit") include("app/admin/user/submit.php");
+elseif ($module == "user-delete") include("app/admin/user/delete.php");

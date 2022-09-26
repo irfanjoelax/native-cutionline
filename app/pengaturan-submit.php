@@ -7,7 +7,6 @@ include 'config/library.php';
 
 /**
  * Variabel untuk menangkap seluruh input dari form
- * 
  */
 $iduser   = $_SESSION['id_user'];
 $fullname = $_POST['fullname_user'];
