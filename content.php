@@ -27,3 +27,7 @@ elseif ($module == "jenis-cuti") include("app/admin/jenis-cuti/index.php");
 elseif ($module == "jenis-cuti-form") include("app/admin/jenis-cuti/form.php");
 elseif ($module == "jenis-cuti-submit") include("app/admin/jenis-cuti/submit.php");
 elseif ($module == "jenis-cuti-delete") include("app/admin/jenis-cuti/delete.php");
+
+// MODULE PENGAJUAN CUTI
+elseif ($module == "pengajuan-cuti") include("app/karyawan/pengajuan-cuti.php");
+elseif ($module == "pengajuan-cuti-submit") include("app/karyawan/pengajuan-cuti-submit.php");

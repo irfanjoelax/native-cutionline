@@ -1,7 +1,7 @@
 <?php
 
 $nama_cuti = $_POST['nama_cuti'];
-$durasi = $_POST['durasi'];
+$durasi    = $_POST['durasi'];
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
