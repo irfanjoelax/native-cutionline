@@ -40,7 +40,7 @@ include 'config/middleware.php';
                     <span class="ml-2"><?= $_SESSION['fullname_user'] ?></span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#!">Settings</a></li>
+                    <li><a class="dropdown-item" href="?module=pengaturan">Pengaturan</a></li>
                     <li>
                         <hr class="dropdown-divider" />
                     </li>

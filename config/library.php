@@ -3,8 +3,8 @@
 /**
  * Include semua konfigurasi yang dibutuhkan pada file ini
  */
-include 'timezone.php';
-include 'database.php';
-include 'tanggal.php';
-include 'title.php';
-include 'alert.php';
+include_once 'timezone.php';
+include_once 'database.php';
+include_once 'tanggal.php';
+include_once 'title.php';
+include_once 'alert.php';
