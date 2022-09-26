@@ -7,7 +7,7 @@ $level    = $_POST['level_user'];
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $query   = "UPDATE supplier SET 
+    $query   = "UPDATE user SET 
                     fullname_user = '$fullname',
                     name_user     = '$username',
                     level_user    = '$level'

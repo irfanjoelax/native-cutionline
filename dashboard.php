@@ -64,6 +64,10 @@ include 'config/middleware.php';
                             <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                             Data User
                         </a>
+                        <a class="nav-link" href="?module=jenis-cuti">
+                            <div class="sb-nav-link-icon"><i class="fas fa-list-ul"></i></div>
+                            Jenis Cuti
+                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
