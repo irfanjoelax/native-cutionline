@@ -18,6 +18,7 @@
                         <th scope="col" class="py-2 text-center">Tgl Akhir</th>
                         <th scope="col" class="py-2 text-center">Durasi</th>
                         <th scope="col" class="py-2 text-center">Status</th>
+                        <th scope="col" class="py-2 text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,6 +59,18 @@
                                 <span class="badge bg-<?= badgeColor($data['status']) ?>">
                                     <?= $data['status']; ?>
                                 </span>
+                            </td>
+                            <td class="text-center">
+                                <?php if ($data['status'] == 'Pengajuan' or $data['status'] == 'Verifikasi') : ?>
+                                    <span class="badge bg-secondary">
+                                        Menunggu
+                                    </span>
+                                <?php endif; ?>
+                                <?php if ($data['status'] == 'Diterima') : ?>
+                                    <a target="_blank" href="print-pengajuan-cuti.php?id=<?= $data['id_ajuan'] ?>" class="badge bg-primary text-decoration-none text-white">
+                                        Cetak
+                                    </a>
+                                <?php endif; ?>
                             </td>
                         </tr>
                     <?php endwhile; ?>

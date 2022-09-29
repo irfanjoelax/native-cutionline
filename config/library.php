@@ -6,5 +6,5 @@
 include_once 'timezone.php';
 include_once 'database.php';
 include_once 'tanggal.php';
-include_once 'title.php';
+include_once 'variable.php';
 include_once 'alert.php';

@@ -87,14 +87,109 @@ include 'config/middleware.php';
             </footer>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
     <script src="asset/js/scripts.js"></script>
     <script>
         $(document).ready(function() {
             $('.datatable').DataTable();
+        });
+    </script>
+
+    <script>
+        <?php
+        $qUserKaryawan = mysqli_query($conn, "SELECT * FROM user WHERE level_user='karyawan'") or die(mysqli_error($conn));
+        $jmlUserKaryawan = mysqli_num_rows($qUserKaryawan);
+
+        $qUserAdmin = mysqli_query($conn, "SELECT * FROM user WHERE level_user='admin'") or die(mysqli_error($conn));
+        $jmlUserAdmin = mysqli_num_rows($qUserAdmin);
+        ?>
+
+        // Pie Chart Example
+        var ctx = document.getElementById("PieChart");
+        var myPieChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ["Karyawan", "Administrator"],
+                datasets: [{
+                    data: [<?= $jmlUserKaryawan ?>, <?= $jmlUserAdmin ?>],
+                    backgroundColor: ['#007bff', '#dc3545'],
+                }],
+            },
+        });
+    </script>
+    <script>
+        <?php
+        include 'config/library.php';
+        $qJenis = mysqli_query($conn, "SELECT * FROM jenis_cuti") or die(mysqli_error($conn));
+
+        while ($data = mysqli_fetch_array($qJenis)) {
+            $label[] = $data['nama_cuti'];
+            $durasi[] = $data['durasi'];
+        }
+        ?>
+        // Bar Chart Example
+        var ctx = document.getElementById("BarChart");
+        var myLineChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: <?= json_encode($label) ?>,
+                datasets: [{
+                    label: "Total",
+                    backgroundColor: "rgba(2,117,216,1)",
+                    borderColor: "rgba(2,117,216,1)",
+                    data: <?= json_encode($durasi) ?>,
+                }],
+            },
+            options: {
+                legend: {
+                    display: false
+                }
+            }
+        });
+    </script>
+    <script>
+        <?php
+        $qPengajuan = mysqli_query($conn, "SELECT * FROM pengajuan_cuti WHERE status='Pengajuan'") or die(mysqli_error($conn));
+        $jmlPengajuan = mysqli_num_rows($qPengajuan);
+
+        $qVerifikasi = mysqli_query($conn, "SELECT * FROM pengajuan_cuti WHERE status='Verifikasi'") or die(mysqli_error($conn));
+        $jmlVerifikasi = mysqli_num_rows($qVerifikasi);
+
+        $qDiterima = mysqli_query($conn, "SELECT * FROM pengajuan_cuti WHERE status='Diterima'") or die(mysqli_error($conn));
+        $jmlDiterima = mysqli_num_rows($qDiterima);
+
+        $qDitolak = mysqli_query($conn, "SELECT * FROM pengajuan_cuti WHERE status='Ditolak'") or die(mysqli_error($conn));
+        $jmlDitolak = mysqli_num_rows($qDitolak);
+        ?>
+
+        // Line Chart Example
+        var ctx = document.getElementById("LineChart");
+        var myLineChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ["Pengajuan", "Verifikasi", "Diterima", "Ditolak"],
+                datasets: [{
+                    label: "Total",
+                    backgroundColor: "rgba(2,117,216,1)",
+                    borderColor: "rgba(2,117,216,1)",
+                    data: [
+                        <?= $jmlPengajuan ?>,
+                        <?= $jmlVerifikasi ?>,
+                        <?= $jmlDiterima ?>,
+                        <?= $jmlDitolak ?>
+                    ],
+                }],
+            },
+            options: {
+                legend: {
+                    display: false
+                }
+            }
         });
     </script>
 </body>
