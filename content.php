@@ -28,6 +28,12 @@ elseif ($module == "jenis-cuti-form") include("app/admin/jenis-cuti/form.php");
 elseif ($module == "jenis-cuti-submit") include("app/admin/jenis-cuti/submit.php");
 elseif ($module == "jenis-cuti-delete") include("app/admin/jenis-cuti/delete.php");
 
-// MODULE PENGAJUAN CUTI
+// MODULE PENGAJUAN CUTI PADA KARYAWAN
 elseif ($module == "pengajuan-cuti") include("app/karyawan/pengajuan-cuti.php");
 elseif ($module == "pengajuan-cuti-submit") include("app/karyawan/pengajuan-cuti-submit.php");
+
+// MODULE PENGAJUAN CUTI PADA ADMINISTRATOR
+elseif ($module == "daftar-cuti") include("app/admin/pengajuan-cuti/index.php");
+elseif ($module == "detail-cuti") include("app/admin/pengajuan-cuti/detail.php");
+elseif ($module == "setuju-cuti") include("app/admin/pengajuan-cuti/setuju.php");
+elseif ($module == "tolak-cuti") include("app/admin/pengajuan-cuti/tolak.php");

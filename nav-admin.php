@@ -12,3 +12,8 @@
     <div class="sb-nav-link-icon"><i class="fas fa-list-ul"></i></div>
     Jenis Cuti
 </a>
+<div class="sb-sidenav-menu-heading">Data Cuti</div>
+<a class="nav-link" href="?module=daftar-cuti">
+    <div class="sb-nav-link-icon"><i class="fas fa-list-ul"></i></div>
+    Daftar Pengajuan
+</a>
