@@ -6,8 +6,22 @@
 </div>
 
 <div class="row my-4">
-    <div class="col-12 mb-3">
+    <div class="col-12 mb-4">
         <form class="row row-cols-lg-auto g-3 align-items-center" method="POST" action="">
+            <div class="col-12">
+                <div class="input-group">
+                    <div class="input-group-text">Jenis Cuti</div>
+                    <select name="id_cuti" class="form-select" required>
+                        <?php
+                        $query  = mysqli_query($conn, "SELECT * FROM jenis_cuti ORDER BY id_cuti DESC") or die(mysqli_error($conn));
+
+                        while ($data = mysqli_fetch_array($query)) :
+                        ?>
+                            <option value="<?= $data['id_cuti'] ?>"><?= $data['nama_cuti'] ?></option>
+                        <?php endwhile; ?>
+                    </select>
+                </div>
+            </div>
             <div class="col-12">
                 <div class="input-group">
                     <div class="input-group-text">Mulai</div>
@@ -66,10 +80,11 @@
                     $query  = "SELECT * FROM pengajuan_cuti JOIN user ON pengajuan_cuti.user_id=user.id_user JOIN jenis_cuti ON pengajuan_cuti.jenis_id=jenis_cuti.id_cuti ORDER BY tgl_ajuan DESC";
 
                     if (isset($_POST['filter'])) {
-                        $mulai = $_POST['mulai'];
-                        $akhir = $_POST['akhir'];
+                        $id_cuti = $_POST['id_cuti'];
+                        $mulai   = $_POST['mulai'];
+                        $akhir   = $_POST['akhir'];
 
-                        $query = "SELECT * FROM pengajuan_cuti JOIN user ON pengajuan_cuti.user_id=user.id_user JOIN jenis_cuti ON pengajuan_cuti.jenis_id=jenis_cuti.id_cuti WHERE tgl_ajuan BETWEEN '$mulai' AND '$akhir' ORDER BY tgl_ajuan DESC";
+                        $query = "SELECT * FROM pengajuan_cuti JOIN user ON pengajuan_cuti.user_id=user.id_user JOIN jenis_cuti ON pengajuan_cuti.jenis_id=jenis_cuti.id_cuti WHERE jenis_id='$id_cuti' AND tgl_ajuan BETWEEN '$mulai' AND '$akhir' ORDER BY tgl_ajuan DESC";
                     }
 
                     $exeSQL = mysqli_query($conn, $query) or die(mysqli_error($conn));
