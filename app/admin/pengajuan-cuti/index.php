@@ -6,6 +6,27 @@
 </div>
 
 <div class="row my-4">
+    <div class="col-12 mb-3">
+        <form class="row row-cols-lg-auto g-3 align-items-center" method="POST" action="">
+            <div class="col-12">
+                <div class="input-group">
+                    <div class="input-group-text">Mulai</div>
+                    <input type="date" class="form-control" name="mulai" value="<?= $_POST['mulai'] ?: ''  ?>" required>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="input-group">
+                    <div class="input-group-text">Akhir</div>
+                    <input type="date" class="form-control" name="akhir" value="<?= $_POST['akhir'] ?: ''  ?>" required>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <button type="submit" name="filter" class="btn btn-dark">Filter</button>
+                <a href="?module=daftar-cuti" class="btn btn-warning">Reset</a>
+            </div>
+        </form>
+    </div>
     <div class="col-12">
         <div class="table-responsive">
             <table class="table table-sm table-bordered table-hover align-middle datatable">
@@ -43,6 +64,14 @@
 
                     $no     = 1;
                     $query  = "SELECT * FROM pengajuan_cuti JOIN user ON pengajuan_cuti.user_id=user.id_user JOIN jenis_cuti ON pengajuan_cuti.jenis_id=jenis_cuti.id_cuti ORDER BY tgl_ajuan DESC";
+
+                    if (isset($_POST['filter'])) {
+                        $mulai = $_POST['mulai'];
+                        $akhir = $_POST['akhir'];
+
+                        $query = "SELECT * FROM pengajuan_cuti JOIN user ON pengajuan_cuti.user_id=user.id_user JOIN jenis_cuti ON pengajuan_cuti.jenis_id=jenis_cuti.id_cuti WHERE tgl_ajuan BETWEEN '$mulai' AND '$akhir' ORDER BY tgl_ajuan DESC";
+                    }
+
                     $exeSQL = mysqli_query($conn, $query) or die(mysqli_error($conn));
 
                     while ($data = mysqli_fetch_array($exeSQL)) :
